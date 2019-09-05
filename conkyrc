@@ -1,0 +1,62 @@
+conky.config = {
+  use_spacer = 'left',
+  pad_percents =62,
+  background = false,
+  double_buffer = true,
+  font = 'Majesticer_R:size=16',
+  use_xft = true,
+  alignment = 'bottom_right',
+  gap_x = -612,
+  gap_y = 82,
+  own_window_argb_visual = true,
+  own_window_argb_value = 0,
+  own_window_type = 'normal',
+  own_window_hints = 'undecorated,below,skip_taskbar,skip_pager,sticky',
+  own_window = true,
+  update_interval = 1,
+}
+
+conky.text = [[
+${color #f6ffff}커널 :   ${color orange}${sysname} ${kernel} on ${machine}
+${color #f6ffff}최근 업데이트 :  ${color orange}${exec cat /var/log/pacman.log | grep upgraded | tail -n 1 | rev | cut -d '[' -f2- | rev | tr -d '[' | tr -d ']'}      
+${color violet}${if_match ${exec sudo pacman -Qu |wc -l}>0} ${exec sudo pacman -Qu |wc -l}개의 패키지를 업데이트 할 수 있습니다.${endif} ${if_match ${exec sudo pacman -Qu |wc -l}==0} 최신 시스템을 사용 중 입니다.${endif} 
+${color red}${if_match ${exec sudo pacman -Qu | grep -c 'linux '}>0} 커널 업데이트가 있습니다.${endif}
+${hr}
+${color #f6ffff}현재 시각 :   ${color orange}${time %Y}년 ${time %b}  ${time %e}일  ${time %A}  ${time %H} 시 ${time %M} 분 ${time %S} 초
+${color #f6ffff}가동 시간 :   ${color orange}${uptime}
+${hr}
+${color #f6ffff}CPU : ${color #00c0c0}${freq_g} GHz
+${color #f6ffff}CPU_ALL                              ${color #00c0c0}${cpu cpu0}%
+${color #f6ffff}${cpubar cpu}${cpugraph}
+${color #f6ffff}CPU_1                                   ${color #00c0c0}${cpu cpu1}%
+${color #f6ffff}${cpubar 4 cpu1}${cpugraph}
+${color #f6ffff}CPU_2                                  ${color #00c0c0}${cpu cpu2}%
+${color #f6ffff}${cpubar cpu2}${cpugraph}
+${color #f6ffff}CPU_3                                  ${color #00c0c0}${cpu cpu3}%
+${color #f6ffff}${cpubar cpu3}${cpugraph}
+${color #f6ffff}CPU_4                                  ${color #00c0c0}${cpu cpu4}%
+${color #f6ffff}${cpubar cpu4}${cpugraph}
+${color #f6ffff}CPU_5                                  ${color #00c0c0}${cpu cpu5}%
+${color #f6ffff}${cpubar cpu5}${cpugraph}
+${color #f6ffff}CPU_6                                  ${color #00c0c0}${cpu cpu6}%
+${color #f6ffff}${cpubar cpu6}${cpugraph}
+${color #f6ffff}CPU_7                                  ${color #00c0c0}${cpu cpu7}%
+${color #f6ffff}${cpubar cpu7}${cpugraph}
+${color #f6ffff}CPU_8                                  ${color #00c0c0}${cpu cpu8}%
+${color #f6ffff}${cpubar cpu8}${cpugraph}
+${color #f6ffff}RAM :  ${color #00c0c0}${mem} / ${color #f6ffff}${memmax}${color #00c0c0}${memperc}% 
+${color #f6ffff}${membar}${memgraph}
+${color #f6ffff}SWAP : ${color #00c0c0}${swap} / ${color #f6ffff}${swapmax}    ${color #00c0c0}${swapperc}% 
+${color #f6ffff}${swapbar}
+${color #f6ffff}SSD : ${fs_used /}/${fs_size /} ${fs_bar 6 /}
+${hr}
+${color #f6ffff}   IP   :   ${color #00c0c0}${addr wlp62s0}
+${color #f6ffff}   Up  :   ${color #00c0c0}${upspeed wlp62s0}    ${color #f6ffff}Down:   ${color #00c0c0}${downspeed wlp62s0}
+${hr}
+                                                      ${color #f6ffff}Processes: ${color #00c0c0}${processes} ${color #f6ffff}\ Running:${color #00c0c0} ${running_processes} 
+${color #f6ffff} CPU(%)            MEM(%)            PID                        Name
+${color #00c0c0} ${top cpu 1}                ${top mem 1}              ${top pid 1}                  ${top name 1} 
+${color #008080} ${top cpu 2}}                ${top mem 2}              ${top pid 2}                  ${top name 2} 
+${color #008080} ${top cpu 3}                ${top mem 3}              ${top pid 3}                  ${top name 3}
+${color #008080} ${top cpu 4}                ${top mem 4}              ${top pid 4}                  ${top name 4} 
+]]
