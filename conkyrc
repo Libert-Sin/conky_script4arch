@@ -7,7 +7,7 @@ conky.config = {
   use_xft = true,
   alignment = 'bottom_right',
   gap_x = -612,
-  gap_y = 82,
+  gap_y = 560,
   own_window_argb_visual = true,
   own_window_argb_value = 0,
   own_window_type = 'normal',
@@ -18,11 +18,11 @@ conky.config = {
 
 conky.text = [[
 ${color #f6ffff}커널 :   ${color orange}${sysname} ${kernel} on ${machine}
-${color #f6ffff}최근 업데이트 :  ${color orange}${exec cat /var/log/pacman.log | grep upgraded | tail -n 1 | rev | cut -d '[' -f2- | rev | tr -d '[' | tr -d ']'}      
+${color #f6ffff}최근 업데이트 :  ${color orange}${exec cat /var/log/pacman.log | grep upgraded | tail -n 1 | rev | cut -d 'T' -f2- | rev | tr -d '['}  ${exec cat /var/log/pacman.log | grep upgraded | tail -n 1 | rev | cut -d '[' -f2- | rev | cut -d 'T' -f2 | rev | cut -d '+' -f2 | rev}
 ${color violet}${if_match ${exec sudo pacman -Qu |wc -l}>0} ${exec sudo pacman -Qu |wc -l}개의 패키지를 업데이트 할 수 있습니다.${endif} ${if_match ${exec sudo pacman -Qu |wc -l}==0} 최신 시스템을 사용 중 입니다.${endif} 
 ${color red}${if_match ${exec sudo pacman -Qu | grep -c 'linux '}>0} 커널 업데이트가 있습니다.${endif}
 ${hr}
-${color #f6ffff}현재 시각 :   ${color orange}${time %Y}년 ${time %b}  ${time %e}일  ${time %A}  ${time %H} 시 ${time %M} 분 ${time %S} 초
+${color #f6ffff}현재 시각 :   ${color orange}${time %Y}년 ${time %b}  ${time %e}일 ${time %A}  ${time %H} 시 ${time %M} 분 ${time %S} 초
 ${color #f6ffff}가동 시간 :   ${color orange}${uptime}
 ${hr}
 ${color #f6ffff}CPU : ${color #00c0c0}${freq_g} GHz
