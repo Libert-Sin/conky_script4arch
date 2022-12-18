@@ -19,6 +19,8 @@ conky.config = {
 }
 
 conky.text = [[
-${color #3e6793}${exec sudo pacman -Qu}
+${color #3e6793}
+------------- 업데이트 목록 -------------
+${exec sudo pacman -Qu}
 ]]
 
