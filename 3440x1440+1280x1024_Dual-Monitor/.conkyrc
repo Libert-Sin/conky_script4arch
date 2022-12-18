@@ -4,11 +4,11 @@ conky.config = {
   pad_percents =62,
   background = false,
   double_buffer = true,
-  font = 'Majesticer_B:size=10',
+  font = 'Majesticer_B:size=11',
   use_xft = true,
   alignment = 'top_right',
-  gap_x = -350,
-  gap_y = 800,
+  gap_x = -450,
+  gap_y = 900,
   own_window_argb_visual = true,
   own_window_argb_value = 0,
   own_window_type = 'normal',
@@ -29,11 +29,11 @@ ${color #ffffff}현재 시각 :   ${color orange}${time %Y}년 ${time %b}  ${tim
 ${color #ffffff}가동 시간 :   ${color orange}${uptime}
 ${hr}
 ${color #ffffff}CPU : ${color #00c0c0}${freq_g} GHz
-${color #ffffff}CPU_ALL		             ${color #00c0c0}${cpu cpu0}%
+${color #ffffff}CPU_ALL		             ${color #00c0c0}
 ${color #ffffff}${cpubar cpu}${cpugraph}
 ${color #00c0c0}${color #ffffff}${cpubar cpu1}
 ${color #00c0c0}${color #ffffff}${cpubar cpu2}
-${color #00c0c0} ${color #ffffff}${cpubar cpu3}
+${color #00c0c0}${color #ffffff}${cpubar cpu3}
 ${color #00c0c0}${color #ffffff}${cpubar cpu4}
 ${color #00c0c0}${color #ffffff}${cpubar cpu5}
 ${color #00c0c0}${color #ffffff}${cpubar cpu6}
@@ -50,10 +50,10 @@ ${color #00c0c0}${color #ffffff}${cpubar cpu16}
 
 ${hr}
 
-${color #ffffff}RAM : ${color #00c0c0}${mem} / ${color #ffffff}${memmax}${color #00c0c0}${memperc}%
+${color #ffffff}RAM : ${color #00c0c0}${mem} / ${color #ffffff}${memmax}${color #00c0c0}
 ${color #ffffff}${membar}
 
-${color #ffffff}SWAP : ${color #00c0c0}${swap} / ${color #ffffff}${swapmax}${color #00c0c0}${swapperc}%
+${color #ffffff}SWAP : ${color #00c0c0}${swap} / ${color #ffffff}${swapmax}${color #00c0c0}
 ${color #ffffff}${swapbar}
 
 ${color #ffffff}SSD : ${fs_used /}/${fs_size /}
