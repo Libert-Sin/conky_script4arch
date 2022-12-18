@@ -7,7 +7,7 @@ conky.config = {
   font = 'Majesticer_B:size=10',
   use_xft = true,
   alignment = 'top_right',
-  gap_x = -500,
+  gap_x = -350,
   gap_y = 800,
   own_window_argb_visual = true,
   own_window_argb_value = 0,
@@ -68,11 +68,11 @@ ${hr}
 
 						                   ${color #ffffff}Processes: ${color #00c0c0}${processes} ${color #ffffff}\ Running:${color #00c0c0} ${running_processes}
 
-${color #ffffff} ${goto 0}CPU(%)${goto 130}MEM(%)${goto 285}PID${goto 380}Name
-${color #00c0c0} ${goto 0}${top cpu 1}${goto 130}${top mem 1}${goto 260}${top pid 1}${goto 380}${top name 1}
-${color #008080} ${goto 0}${top cpu 2}${goto 130}${top mem 2}${goto 260}${top pid 2}${goto 380}${top name 2}
-${color #008080} ${goto 0}${top cpu 3}${goto 130}${top mem 3}${goto 260}${top pid 3}${goto 380}${top name 3}
-${color #008080} ${goto 0}${top cpu 4}${goto 130}${top mem 4}${goto 260}${top pid 4}${goto 380}${top name 4}
+${color #ffffff} ${goto 0}CPU(%)${goto 62}MEM(%)${goto 140}PID${goto 180}Name
+${color #00c0c0} ${goto 0}${top cpu 1}${goto 62}${top mem 1}${goto 130}${top pid 1}${goto 180}${top name 1}
+${color #008080} ${goto 0}${top cpu 2}${goto 62}${top mem 2}${goto 130}${top pid 2}${goto 180}${top name 2}
+${color #008080} ${goto 0}${top cpu 3}${goto 62}${top mem 3}${goto 130}${top pid 3}${goto 180}${top name 3}
+${color #008080} ${goto 0}${top cpu 4}${goto 62}${top mem 4}${goto 130}${top pid 4}${goto 180}${top name 4}
 
 
 ]]
