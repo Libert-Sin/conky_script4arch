@@ -1,0 +1,80 @@
+conky.config = {
+  use_spacer = 'right',
+  maximum_width = 618,
+  pad_percents = 62,
+  background = false,
+  double_buffer = true,
+  font = 'Majesticer_B:size=16',
+  use_xft = true,
+  alignment = 'top_right',
+  gap_x = 400,
+  gap_y = -1600,
+  own_window_argb_visual = true,
+  own_window_argb_value = 0,
+  own_window_type = 'normal',
+  own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+  own_window_transparent = false,
+  own_window = true,
+  update_interval = 1,
+}
+
+conky.text = [[
+
+${color #ffffff}커널:   ${color orange}${sysname} ${kernel} on ${machine}
+${color #ffffff}최근 업데이트:  ${color orange}${exec cat /var/log/pacman.log | grep upgraded |  tail -n 1 | grep upgraded | rev | cut -d 'T' -f2- | rev | tr -d '['}  ${exec cat /var/log/pacman.log | grep upgraded | tail -n 1 | grep upgraded | rev | cut -d ']' -f2- | rev | cut -d 'T' -f2 | rev | cut -d '+' -f2 | rev}
+${color violet}${if_match ${exec sudo pacman -Qu | grep -v "무시" | wc -l}>0} ${exec sudo pacman -Qu | grep -v "무시" | wc -l}개의 패키지를 업데이트 할 수 있습니다.${endif} ${color orange}${if_match ${exec sudo pacman -Qu | grep -v "무시" | wc -l}==0}패키지 업데이트가 없습니다.${endif}
+${color red}${if_match ${exec sudo pacman -Qu | grep -v "무시" | grep -c 'linux'}>0} 커널 업데이트가 있습니다.${endif}${color orange}${if_match ${exec sudo pacman -Qu | grep -v "무시" | grep -c 'linux'}==0} 최신 시스템을 사용 중 입니다.${endif}
+${color #ffffff}${hr}
+${color #ffffff}현재 시각:   ${color orange}${time %Y}년 ${time %b}  ${time %e}일  ${time %A}  ${time %H} 시 ${time %M} 분 ${time %S} 초
+${color #ffffff}가동 시간:   ${color orange}${uptime} ${goto 324} ${color #00c0c0}${exec sensors | grep 'Motherboard Temperature' | awk '{print $3}' | sed 's/+//'}
+${color #ffffff}${hr}
+${color #ffffff}CPU: ${color #00c0c0}${freq_g}GHz ${goto 162}${color #ffffff}${goto 162} ${color #00c0c0}${exec sensors | grep 'CPU Temperature' | awk '{print $3}' | sed 's/+//'}${goto 324}${color #ffffff}Socket: ${color #00c0c0}${exec sensors | grep 'CPU Socket Temperature' | awk '{print $4}' | sed 's/+//'}
+${color #ffffff}CPU_ALL		             ${color #00c0c0}
+${color #ffffff}${cpubar cpu}${cpugraph}
+${color #00c0c0}${color #ffffff}${cpubar cpu1}
+${color #00c0c0}${color #ffffff}${cpubar cpu2}
+${color #00c0c0}${color #ffffff}${cpubar cpu3}
+${color #00c0c0}${color #ffffff}${cpubar cpu4}
+${color #00c0c0}${color #ffffff}${cpubar cpu5}
+${color #00c0c0}${color #ffffff}${cpubar cpu6}
+${color #00c0c0}${color #ffffff}${cpubar cpu7}
+${color #00c0c0}${color #ffffff}${cpubar cpu8}
+${color #00c0c0}${color #ffffff}${cpubar cpu9}
+${color #00c0c0}${color #ffffff}${cpubar cpu10}
+${color #00c0c0}${color #ffffff}${cpubar cpu11}
+${color #00c0c0}${color #ffffff}${cpubar cpu12}
+${color #00c0c0}${color #ffffff}${cpubar cpu13}
+${color #00c0c0}${color #ffffff}${cpubar cpu14}
+${color #00c0c0}${color #ffffff}${cpubar cpu15}
+${color #00c0c0}${color #ffffff}${cpubar cpu16}
+
+${color #ffffff}${hr}
+
+${color #ffffff}GPU: ${color #00c0c0}${exec radeontop -d - -l 1 | grep -m 1 'gpu' | awk '{print $5}' | sed 's/,//'}${goto 324}${color #ffffff}Vram: ${color #00c0c0}${exec radeontop -d - -l 1 | grep -m 1 'vram' | awk '{print $27}' | sed 's/,//'}
+${color #ffffff}edge: ${color #00c0c0}${exec sensors amdgpu-pci-4300 | grep 'edge' | awk '{print $2}' | sed 's/+//'}${goto 162}${color #ffffff}junction: ${color #00c0c0}${exec sensors amdgpu-pci-4300 | grep 'junction' | awk '{print $2}' | sed 's/+//'}${goto 324}${color #ffffff}mem: ${color #00c0c0}${exec sensors amdgpu-pci-4300 | grep 'mem' | awk '{print $2}' | sed 's/+//'}
+
+${color #ffffff}RAM: ${color #00c0c0}${mem} / ${color #ffffff}${memmax}${color #00c0c0}
+${color #ffffff}${membar}
+${color #ffffff}SWAP: ${color #00c0c0}${swap} / ${color #ffffff}${swapmax}${color #00c0c0}
+${color #ffffff}${swapbar}
+
+${color #ffffff}SSD: ${fs_used /}/${fs_size /}${goto 324}${color #00c0c0}${exec sudo nvme smart-log /dev/nvme0n1 | grep 'temperature' | awk '{print $3$4}'}
+${color #ffffff}${fs_bar 6 /}
+${color #ffffff}HDD: ${fs_used /home/libert/Data}/${fs_size /home/libert/Data}${goto 324}${color #00c0c0}${exec sudo hddtemp /dev/sda | awk '{print $4$5}'}
+${color #ffffff}${fs_bar 6 /home/libert/Data}
+
+${color #ffffff}${hr}
+
+${color #ffffff}   IP:   ${color #00c0c0}${addr enp5s0}
+${color #ffffff}   Up:   ${color #00c0c0}${upspeed enp5s0}    ${color #ffffff}Down:   ${color #00c0c0}${downspeed enp5s0}
+
+${color #ffffff}${hr}
+${goto 200}${color #ffffff}Processes: ${color #00c0c0}${processes} ${color #ffffff}\ Running:${color #00c0c0} ${running_processes}
+
+${color #ffffff} ${goto 0}CPU(%)${goto 100}MEM(%)${goto 200}PID${goto 300}Name
+${color #00c0c0} ${goto 0}${top cpu 1}${goto 100}${top mem 1}${goto 200}${top pid 1}${goto 300}${top name 1}
+${color #008080} ${goto 0}${top cpu 2}${goto 100}${top mem 2}${goto 200}${top pid 2}${goto 300}${top name 2}
+${color #008080} ${goto 0}${top cpu 3}${goto 100}${top mem 3}${goto 200}${top pid 3}${goto 300}${top name 3}
+${color #008080} ${goto 0}${top cpu 4}${goto 100}${top mem 4}${goto 200}${top pid 4}${goto 300}${top name 4}
+
+]]
